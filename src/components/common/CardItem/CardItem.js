@@ -6,7 +6,9 @@ export const CardItem = ({ name }) => {
   return (
     <div>
       <span>{name}</span>
-      <button onClick={() => remove(name)}>Remove</button>
+      <button onClick={() => remove(name)} style={{ marginLeft: 16 }}>
+        Remove
+      </button>
     </div>
   );
 };
