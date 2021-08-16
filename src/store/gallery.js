@@ -1,7 +1,16 @@
 import create from 'zustand';
 
+const someAsyncMethod = async () => {
+  return new Promise(res => {
+    setTimeout(() => {
+      res([10, 20, 30]);
+    }, 2000);
+  });
+};
+
 export const useGallery = create((set, get) => ({
   cards: ['Bob', 'Marley'],
+  someData: [],
   add: name => {
     const { cards } = get();
     const id = cards.indexOf(name);
@@ -21,5 +30,11 @@ export const useGallery = create((set, get) => ({
       return true;
     }
     return false;
+  },
+  getCountries: async () => {
+    const data = await someAsyncMethod();
+    set({
+      someData: data
+    });
   }
 }));
